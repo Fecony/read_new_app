@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  app:
+    build: .
+    container_name: news_app
+    ports:
+      - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - VITE_PORT=${VITE_PORT:-5173}
