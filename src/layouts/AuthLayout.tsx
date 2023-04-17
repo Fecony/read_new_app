@@ -18,9 +18,9 @@ const AuthLayout = () => (
                 className='flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6'
             >
                 <div className='max-w-xl lg:max-w-3xl'>
-                    <Link className='block text-gray-900' to='/'>
+                    <Link className='inline-block text-gray-900' to='/'>
                         <span className='sr-only'>Home</span>
-                        <IconBrandNytimes className='h-8 sm:h-10' />
+                        <IconBrandNytimes className='h-8 w-8 sm:h-10 sm-w-10' />
                     </Link>
 
                     <h1 className='mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl'>

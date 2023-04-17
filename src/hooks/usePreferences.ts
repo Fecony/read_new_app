@@ -51,6 +51,8 @@ export const usePreferences = () => {
                 toast.success('Preferences saved!', { icon: '🦄' });
             })
             .catch((error) => {
+                toast.error("Something went wrong: can't save preferences...", { icon: '⚠️' });
+
                 if (error.response.status !== 422) {
                     throw error;
                 }

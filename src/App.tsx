@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { NotFoundPage, RegisterPage, LoginPage, SettingsPage } from './pages';
 import { AppLayout, AuthLayout } from './layouts';
 import { Toaster } from 'react-hot-toast';
@@ -11,6 +11,8 @@ function App() {
             <Toaster position='top-right' />
 
             <Routes>
+                <Route path='/' element={<Navigate to='/news' replace />} />
+
                 <Route path='/news' element={<ArticlePage />} />
                 <Route element={<AppLayout />}>
                     <Route path='/profile/news' element={<ArticlePage />} />

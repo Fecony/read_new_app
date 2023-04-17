@@ -23,7 +23,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: AuthProps = {})
                 .get('/api/user')
                 .then((res) => res.data)
                 .catch((error) => {
-                    if (error.response.status !== 409) throw error;
+                    if (error.response?.status !== 409) throw error;
                 }),
         {
             revalidateIfStale: false,
@@ -41,13 +41,17 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: AuthProps = {})
                 mutate();
             })
             .catch((error) => {
-                if (error.response.status !== 422) {
-                    throw error;
+                if (error?.message) {
+                    toast.error(`Something went wrong: ${error?.response?.data?.message}`, { icon: '⚠️' });
+                } else {
+                    toast.error("Something went wrong: can't register...", { icon: '⚠️' });
                 }
 
-                return {
-                    errors: Object.values(error.response.data.errors).flat(),
-                };
+                if (error.response?.status !== 422) throw error;
+
+                // return {
+                //     errors: Object.values(error.response.data.errors).flat(),
+                // };
             });
     };
 
@@ -58,6 +62,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: AuthProps = {})
             .post('/login', payload)
             .then(() => mutate())
             .catch((error) => {
+                toast.error("Something went wrong: can't login...", { icon: '⚠️' });
+
                 if (error.response.status !== 422) {
                     throw error;
                 }
