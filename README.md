@@ -16,13 +16,13 @@ Things you will need:
 Clone the project
 
 ```bash
-git clone git@github.com:Fecony/news_app.git
+git clone git@github.com:Fecony/read_new_app.git
 ```
 
 Go to the project directory
 
 ```bash
-cd news_app
+cd read_new_app
 ```
 
 Copy .env.example file to .env on the root folder.
